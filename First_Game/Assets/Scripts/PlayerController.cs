@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             if(state == State.falling)
             {
-                Destroy(other.gameObject);
+                other.gameObject.SendMessage("ChangeToDeath");
                 rb.velocity = new Vector2(rb.velocity.x, jump);
                 state = State.jumping;
             }

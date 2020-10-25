@@ -9,7 +9,7 @@ public class FrogController : MonoBehaviour
     private Animator anim;
 
     private float speed = 2f, jump = 5f;
-    private enum State {idle, jump, fall};
+    private enum State {idle, jump, fall, death};
     private State state = State.idle;
     private enum Direction {left, right};
     private Direction direction = Direction.left;
@@ -75,5 +75,16 @@ public class FrogController : MonoBehaviour
             state = State.idle;
         }
         anim.SetInteger("state", (int)state);
+    }
+
+    private void ChangeToDeath()
+    {
+        state = State.death;
+        rb.velocity = new Vector2(.0f, .0f);
+    }
+
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }
